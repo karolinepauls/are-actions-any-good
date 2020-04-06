@@ -52,7 +52,14 @@ jobs:
 
   fail:
     runs-on: ubuntu-latest
-    needs: [stage-2-2]
+    needs: [stage-2-1, stage-2-2]
+    steps:
+    - name: fail
+      run: 'false'
+
+  dependent-on-fail:
+    runs-on: ubuntu-latest
+    needs: [fail]
     steps:
     - name: fail
       run: 'false'
